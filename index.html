@@ -70,6 +70,41 @@
   footer{border-top:1px solid var(--hairline);padding:44px 0 60px;color:var(--slate);font-size:14.5px}
   footer .mono{font-family:'IBM Plex Mono',monospace}
 
+  h1 .hl{font-style:italic;color:var(--teal);position:relative;white-space:nowrap}
+  h1 .hl::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:10px;background:rgba(14,124,123,.16);z-index:-1;border-radius:3px}
+
+  /* ---------- interactive timeline ---------- */
+  .itl{background:#0F1626;border-radius:14px;padding:40px 34px 46px;margin:26px 0 10px;color:#DCE6EE;overflow:hidden}
+  .itl-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+  .itl-head .t{font-family:'IBM Plex Serif',serif;font-weight:600;font-size:21px;color:#EAF2F7}
+  .itl-head .hint{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#7A8894}
+  .itl-legend{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0 30px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#9AA7BD}
+  .itl-legend span{display:inline-flex;align-items:center;gap:7px}
+  .itl-legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+  .itl-track{list-style:none;position:relative;padding:6px 0}
+  .itl-track::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:3px;transform:translateX(-50%);border-radius:3px;
+    background:linear-gradient(180deg,#2AD1C9 0%,#2AD1C9 16%,#A9C4E8 22%,#F2B33D 30%,#A9C4E8 38%,#2AD1C9 46%,#2AD1C9 56%,#F2B33D 64%,#F2B33D 78%,#E96BAF 88%,#E96BAF 100%)}
+  .itl-item{position:relative;width:50%;padding:10px 44px 26px 0;opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+  .itl-item.on{opacity:1;transform:none}
+  .itl-item:nth-child(even){margin-left:50%;padding:10px 0 26px 44px}
+  .itl-node{position:absolute;top:22px;right:-9px;width:18px;height:18px;border-radius:50%;background:var(--era);border:3px solid #0F1626;box-shadow:0 0 0 2px var(--era),0 0 14px var(--era);z-index:2;transition:box-shadow .3s}
+  .itl-item:nth-child(even) .itl-node{right:auto;left:-9px}
+  .itl-card{background:#17202F;border:1px solid #263449;border-radius:10px;padding:16px 18px;text-align:left;transition:transform .25s,border-color .25s,box-shadow .25s}
+  .itl-item:hover .itl-card{transform:translateY(-3px);border-color:var(--era);box-shadow:0 10px 26px rgba(0,0,0,.35)}
+  .itl-item:hover .itl-node{box-shadow:0 0 0 3px var(--era),0 0 26px var(--era)}
+  .itl-year{font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:500;color:var(--era);letter-spacing:.06em}
+  .itl-card h4{font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:15.5px;color:#EAF2F7;margin:4px 0 5px}
+  .itl-card p{font-size:13px;line-height:1.55;color:#9AA7BD}
+  .itl-item.winter .itl-card{border-style:dashed;background:#141D2B}
+  .itl-item.winter h4{color:#A9C4E8;letter-spacing:.04em}
+  @media (prefers-reduced-motion: reduce){.itl-item{opacity:1;transform:none;transition:none}}
+  @media (max-width:820px){
+    .itl{padding:28px 18px 34px}
+    .itl-track::before{left:12px}
+    .itl-item,.itl-item:nth-child(even){width:100%;margin-left:0;padding:8px 0 22px 38px}
+    .itl-node,.itl-item:nth-child(even) .itl-node{left:4px;right:auto}
+  }
+
   @media (max-width:820px){
     .hero{grid-template-columns:1fr;padding:48px 0 40px}
     h1{font-size:34px}
@@ -101,8 +136,8 @@
   <div class="hero">
     <div>
       <p class="role">AI/ML graduate student · software engineer</p>
-      <h1>I build AI systems that ship — and I'm learning to lead the people who use them.</h1>
-      <p>Wenyu (Daniel) Du. Graduate student in AI/ML at Indiana Wesleyan University, with hands-on industry experience taking a large language model from idea to production.</p>
+      <h1>Navigator of <em class="hl">my own timeline</em>.</h1>
+      <p>I'm Wenyu (Daniel) Du. I've shipped an LLM into production, mapped seventy years of AI history, and measured my own gaps honestly — this portfolio is the course I'm charting through what comes next.</p>
     </div>
     <div class="query" role="img" aria-label="A stylized SQL query returning my core strengths">
       <span class="cm">-- what I bring to a team</span><br>
@@ -178,6 +213,36 @@
           </ul>
         </dd>
       </dl>
+      <div class="itl">
+        <div class="itl-head">
+          <span class="t">Interactive edition — seventy years in one scroll</span>
+          <span class="hint">// scroll down · hover any node</span>
+        </div>
+        <div class="itl-legend">
+          <span><i style="background:#2AD1C9"></i>foundations &amp; comebacks</span>
+          <span><i style="background:#A9C4E8"></i>ai winters</span>
+          <span><i style="background:#F2B33D"></i>booms &amp; breakthroughs</span>
+          <span><i style="background:#E96BAF"></i>generative era</span>
+        </div>
+        <ol class="itl-track">
+          <li class="itl-item" style="--era:#2AD1C9"><span class="itl-node"></span><div class="itl-card"><span class="itl-year">1950</span><h4>Turing asks: can machines think?</h4><p>"Computing Machinery and Intelligence" proposes the Imitation Game — the Turing Test.</p></div></li>
+          <li class="itl-item" style="--era:#2AD1C9"><span class="itl-node"></span><div class="itl-card"><span class="itl-year">1956</span><h4>Dartmouth names the field</h4><p>John McCarthy coins "artificial intelligence." A discipline is born from a summer workshop.</p></div></li>
+          <li class="itl-item" style="--era:#2AD1C9"><span class="itl-node"></span><div class="itl-card"><span class="itl-year">1957</span><h4>The Perceptron learns</h4><p>Rosenblatt builds a trainable neural network — the ancestor of everything deep learning.</p></div></li>
+          <li class="itl-item" style="--era:#2AD1C9"><span class="itl-node"></span><div class="itl-card"><span class="itl-year">1966</span><h4>ELIZA, the first chatbot</h4><p>A pattern-matching "therapist" shows how easily people see minds in machines.</p></div></li>
+          <li class="itl-item winter" style="--era:#A9C4E8"><span class="itl-node"></span><div class="itl-card"><span class="itl-year">1973–1980</span><h4>FIRST AI WINTER</h4><p>Hype outruns hardware. The Lighthill Report triggers funding collapse; labs close.</p></div></li>
+          <li class="itl-item" style="--era:#F2B33D"><span class="itl-node"></span><div class="itl-card"><span class="itl-year">1980s</span><h4>Expert systems boom</h4><p>DEC's XCON saves millions; Japan bets big with the Fifth Generation project.</p></div></li>
+          <li class="itl-item winter" style="--era:#A9C4E8"><span class="itl-node"></span><div class="itl-card"><span class="itl-year">1987–1993</span><h4>SECOND AI WINTER</h4><p>The Lisp-machine market collapses; brittle expert systems bring a decade of skepticism.</p></div></li>
+          <li class="itl-item" style="--era:#2AD1C9"><span class="itl-node"></span><div class="itl-card"><span class="itl-year">1997</span><h4>Deep Blue defeats Kasparov</h4><p>A machine beats the world chess champion — computation masters a "human" domain.</p></div></li>
+          <li class="itl-item" style="--era:#2AD1C9"><span class="itl-node"></span><div class="itl-card"><span class="itl-year">2006</span><h4>Deep learning reborn — and the cloud arrives</h4><p>Hinton cracks deep network training; AWS launches, renting massive compute to anyone.</p></div></li>
+          <li class="itl-item" style="--era:#2AD1C9"><span class="itl-node"></span><div class="itl-card"><span class="itl-year">2009</span><h4>ImageNet: fuel for the fire</h4><p>Fei-Fei Li's millions of labeled images give neural networks the data they always lacked.</p></div></li>
+          <li class="itl-item" style="--era:#F2B33D"><span class="itl-node"></span><div class="itl-card"><span class="itl-year">2012</span><h4>AlexNet — the breakthrough</h4><p>Hinton's students crush ImageNet on Nvidia GPUs. Hardware catches up with theory; the modern race begins.</p></div></li>
+          <li class="itl-item" style="--era:#F2B33D"><span class="itl-node"></span><div class="itl-card"><span class="itl-year">2016</span><h4>AlphaGo defeats Lee Sedol</h4><p>DeepMind wins 4–1 at Go — a feat once thought decades away.</p></div></li>
+          <li class="itl-item" style="--era:#F2B33D"><span class="itl-node"></span><div class="itl-card"><span class="itl-year">2017</span><h4>"Attention Is All You Need"</h4><p>Google publishes the Transformer — the T in GPT, the foundation of every modern LLM.</p></div></li>
+          <li class="itl-item" style="--era:#E96BAF"><span class="itl-node"></span><div class="itl-card"><span class="itl-year">2020</span><h4>GPT-3 stuns researchers</h4><p>175 billion parameters write essays, code, and poetry from plain prompts. Scale wins.</p></div></li>
+          <li class="itl-item" style="--era:#E96BAF"><span class="itl-node"></span><div class="itl-card"><span class="itl-year">2022</span><h4>ChatGPT goes mainstream</h4><p>~100 million users in two months — the fastest-adopted app in history.</p></div></li>
+          <li class="itl-item" style="--era:#E96BAF"><span class="itl-node"></span><div class="itl-card"><span class="itl-year">2023+</span><h4>The frontier race</h4><p>GPT-4, Claude, Gemini; Nvidia becomes the industry's engine. AI reshapes every industry — including mine.</p></div></li>
+        </ol>
+      </div>
       <figure>
         <img src="assets/timeline_overview.jpg" alt="Overview slide: seven decades of AI on a single horizontal timeline with color-coded eras" loading="lazy">
         <figcaption>fig 1.1 — seven decades at a glance (overview slide)</figcaption>
@@ -335,5 +400,20 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  var items = document.querySelectorAll('.itl-item');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('on'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.2 });
+  items.forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>
