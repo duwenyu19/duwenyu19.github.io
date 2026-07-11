@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wenyu (Daniel) Du — AI/ML Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F9FB; --ink:#16232E; --teal:#0E7C7B; --slate:#5C6B78;
+    --hairline:#DDE5EB; --card:#FFFFFF; --amber:#B98A2F;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+  body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-size:16.5px;line-height:1.65}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
+  a{color:var(--teal)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+
+  header{border-bottom:1px solid var(--hairline);background:var(--paper);position:sticky;top:0;z-index:10}
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;gap:16px;flex-wrap:wrap}
+  .nav .name{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.02em}
+  .nav ul{display:flex;gap:22px;list-style:none}
+  .nav ul a{font-size:14px;text-decoration:none;color:var(--slate)}
+  .nav ul a:hover{color:var(--teal)}
+
+  .hero{padding:72px 0 56px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  h1{font-family:'IBM Plex Serif',serif;font-weight:600;font-size:44px;line-height:1.15;margin-bottom:18px}
+  .hero p{color:var(--slate);max-width:44ch}
+  .hero .role{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;margin-bottom:14px}
+
+  .query{background:var(--ink);color:#DCE6EE;border-radius:10px;padding:22px 24px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.8;box-shadow:0 14px 34px rgba(22,35,46,.16)}
+  .query .kw{color:#69C3C1}
+  .query .cm{color:#7A8894}
+  .query .row{color:#E8D9AE}
+  .query hr{border:none;border-top:1px dashed #3A4A58;margin:12px 0}
+
+  section{padding:56px 0;border-top:1px solid var(--hairline)}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--teal);letter-spacing:.06em;margin-bottom:10px}
+  h2{font-family:'IBM Plex Serif',serif;font-weight:600;font-size:30px;margin-bottom:22px}
+  .prose{max-width:70ch;color:var(--ink)}
+  .prose p+p{margin-top:14px}
+
+  .vp{background:var(--card);border:1px solid var(--hairline);border-left:4px solid var(--teal);border-radius:8px;padding:26px 28px;max-width:76ch}
+  .vp p{font-size:18px;line-height:1.7}
+
+  .artifact{background:var(--card);border:1px solid var(--hairline);border-radius:10px;padding:34px 36px;margin-bottom:34px}
+  .artifact .tag{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--amber);letter-spacing:.05em;margin-bottom:8px}
+  h3{font-family:'IBM Plex Serif',serif;font-weight:600;font-size:24px;margin-bottom:20px}
+  dl{display:grid;grid-template-columns:190px 1fr;row-gap:16px;column-gap:26px}
+  dt{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--slate);letter-spacing:.04em;padding-top:3px}
+  dd{max-width:66ch}
+  dd ul{padding-left:20px}
+  dd li+li{margin-top:6px}
+
+  figure{margin:22px 0 6px}
+  figure img{width:100%;border:1px solid var(--hairline);border-radius:8px;display:block}
+  figcaption{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--slate);margin-top:8px}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+  .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+  .btn{display:inline-block;font-size:14px;font-weight:500;text-decoration:none;padding:9px 16px;border-radius:6px;border:1px solid var(--teal)}
+  .btn.solid{background:var(--teal);color:#fff}
+  .btn.solid:hover{background:#0B6362}
+  .btn.ghost{color:var(--teal)}
+  .btn.ghost:hover{background:#E8F2F1}
+
+  footer{border-top:1px solid var(--hairline);padding:44px 0 60px;color:var(--slate);font-size:14.5px}
+  footer .mono{font-family:'IBM Plex Mono',monospace}
+
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr;padding:48px 0 40px}
+    h1{font-size:34px}
+    dl{grid-template-columns:1fr;row-gap:6px}
+    dt{padding-top:12px}
+    .two-col{grid-template-columns:1fr}
+    .artifact{padding:26px 22px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <span class="name">wenyu_du · portfolio</span>
+    <nav aria-label="Site">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#value">Value</a></li>
+        <li><a href="#artifacts">Artifacts</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div>
+      <p class="role">AI/ML graduate student · software engineer</p>
+      <h1>I build AI systems that ship — and I'm learning to lead the people who use them.</h1>
+      <p>Wenyu (Daniel) Du. Graduate student in AI/ML at Indiana Wesleyan University, with hands-on industry experience taking a large language model from idea to production.</p>
+    </div>
+    <div class="query" role="img" aria-label="A stylized SQL query returning my core strengths">
+      <span class="cm">-- what I bring to a team</span><br>
+      <span class="kw">SELECT</span> skill, evidence<br>
+      <span class="kw">FROM</span> wenyu_du<br>
+      <span class="kw">WHERE</span> ready_to_ship = <span class="kw">true</span>;
+      <hr>
+      <span class="row">applied_llms&nbsp;&nbsp;&nbsp;| built a text-to-SQL system in production</span><br>
+      <span class="row">data_curation&nbsp;&nbsp;| 1,500-table schema, made trainable</span><br>
+      <span class="row">honest_metrics | measures own gaps before leading others</span>
+    </div>
+  </div>
+
+  <section id="about">
+    <p class="eyebrow">// professional bio</p>
+    <h2>About me</h2>
+    <div class="prose">
+      <p>I am a graduate student in Indiana Wesleyan University's AI/ML program and a software engineer. Before this program, I helped my company build an in-house LLM that turned customers' plain-language questions into SQL queries against our internal databases and returned the answers — no analyst in the loop. Our database had about 1,500 tables, and our first attempt at training the model on the full schema failed: it was too slow and demanded hardware we didn't have. The version that worked was narrower and smarter — a curated set of high-relevance tables and their relationships, a vector database retrieving the right schema context per request, and verified correct answers fed back into training.</p>
+      <p>That project shaped what I believe about this field: the model is rarely the hard part. Choosing the right data, setting honest expectations, and bringing people along are what determine whether AI actually delivers. I'm in this program to build the leadership half of that equation.</p>
+    </div>
+  </section>
+
+  <section id="value">
+    <p class="eyebrow">// personal value proposition</p>
+    <h2>What I offer</h2>
+    <div class="vp">
+      <p>I bridge the two halves of AI adoption that usually live in different people: I have shipped an LLM system in production, so I know where these projects really fail — data quality, scope, and expectations — and I am deliberately building the change-leadership skills to guide teams through adoption. Organizations don't just need someone who can build the model or someone who can manage the change. I'm working to be the person who can do both, and this portfolio documents that journey from the first week.</p>
+    </div>
+  </section>
+
+  <section id="artifacts">
+    <p class="eyebrow">// portfolio artifacts</p>
+    <h2>Artifacts</h2>
+
+    <!-- ARTIFACT 1 -->
+    <article class="artifact" id="artifact-1">
+      <p class="tag">artifact_01 · visual research</p>
+      <h3>The Evolution of AI: A Visual Timeline (1950–2026)</h3>
+      <dl>
+        <dt>title</dt>
+        <dd>The Evolution of AI: A Visual Timeline (1950–2026)</dd>
+
+        <dt>introduction</dt>
+        <dd>A designed, eight-slide visual timeline tracing artificial intelligence from Alan Turing's 1950 question to today's generative AI race — including the two "AI winters" that nearly killed the field.</dd>
+
+        <dt>description</dt>
+        <dd>The deck opens with a seven-decade overview timeline, then dedicates a slide to each era: the birth of AI (1950–1969), the two AI winters and the expert-system boom (1970–1995), the machine learning and cloud comeback (1997–2011), the deep learning revolution (2012–2019), and the generative AI era (2020–present), closing with sources. Each milestone carries a plain-language explanation of why it mattered, and the AI winters are annotated with their causes and impacts.</dd>
+
+        <dt>objective</dt>
+        <dd>To understand — and help others understand — how AI actually developed: not as a straight line of progress, but as cycles of hype, collapse, and breakthrough driven as much by hardware and data as by algorithms.</dd>
+
+        <dt>process</dt>
+        <dd>I researched milestones across three source types (a documentary video, an IEEE overview, and Our World in Data's compute-growth analysis), selected the events that best explain each era's turning point, organized them chronologically, and designed the deck with a dark circuit-board visual theme, color-coding eras and using an alternating node layout for the overview timeline.</dd>
+
+        <dt>tools and technologies used</dt>
+        <dd>Microsoft PowerPoint for the final deck; Claude (Anthropic) for research assistance and milestone organization; sources listed below.</dd>
+
+        <dt>value proposition</dt>
+        <dd>This artifact shows I can research a complex technical history, judge which details matter, and communicate them visually to a non-technical audience — the same skill needed to brief stakeholders on any AI initiative.</dd>
+
+        <dt>unique value</dt>
+        <dd>Most AI timelines celebrate the wins. Mine gives equal weight to the failures — the winters — because as someone who has trained an LLM, I know overpromising is the field's oldest failure mode, and the leaders who remember it make better decisions.</dd>
+
+        <dt>relevance</dt>
+        <dd>For hiring managers and collaborators: evidence of research synthesis, visual communication, and historical judgment about AI hype cycles — directly applicable to technology strategy and stakeholder education.</dd>
+
+        <dt>references</dt>
+        <dd>
+          <ul>
+            <li>Putchuon – "Put You On." (2024). <em>The entire history of artificial intelligence (Last 100 years)</em> [Video]. YouTube.</li>
+            <li>IEEE Computer Society. (n.d.). <em>The evolution of AI: From foundations to future prospects.</em></li>
+            <li>Roser, M., et al. (n.d.). <em>A brief history of artificial intelligence.</em> Our World in Data.</li>
+          </ul>
+        </dd>
+      </dl>
+      <figure>
+        <img src="assets/timeline_overview.jpg" alt="Overview slide: seven decades of AI on a single horizontal timeline with color-coded eras" loading="lazy">
+        <figcaption>fig 1.1 — seven decades at a glance (overview slide)</figcaption>
+      </figure>
+      <div class="two-col">
+        <figure>
+          <img src="assets/timeline_title.jpg" alt="Title slide of the timeline deck" loading="lazy">
+          <figcaption>fig 1.2 — title slide</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/timeline_winters.jpg" alt="Slide detailing the two AI winters and the expert-system boom, with causes and impacts" loading="lazy">
+          <figcaption>fig 1.3 — the two AI winters, with causes and impacts</figcaption>
+        </figure>
+      </div>
+      <div class="btns">
+        <a class="btn solid" href="assets/AI_Evolution_Timeline.pptx" download>Download the deck (.pptx)</a>
+        <a class="btn ghost" href="assets/AI_Evolution_Timeline.pdf" target="_blank" rel="noopener">View as PDF</a>
+      </div>
+    </article>
+
+    <!-- ARTIFACT 2 -->
+    <article class="artifact" id="artifact-2">
+      <p class="tag">artifact_02 · applied ai · team project</p>
+      <h3>"Walk the Talk — Speakers Bureau" AI Booking Bot</h3>
+      <dl>
+        <dt>title</dt>
+        <dd>“Walk the Talk — Speakers Bureau” AI Booking Agent (Team Project)</dd>
+
+        <dt>introduction</dt>
+        <dd>A working AI booking portal, built with my team in Google AI Studio, that matches event organizers with speakers by topic, audience, language, and budget — combining a filterable speaker directory, a side-by-side comparison portal, and a conversational AI booking agent.</dd>
+
+        <dt>description</dt>
+        <dd>The project ran in five phases: deep-dive peer interviews to uncover each team member's real story; AI-drafted TED-talk-style introductions; professional speaker profiles (bio, keynote topics, speaking style, A/V needs, pricing); team execution split across three task forces — bot building, a process infographic, and a marketing infographic; and a final live demo answering unscripted audience queries. The finished portal loads eight real speaker profiles and runs in "sole authority mode": the agent answers strictly from the official speaker-profiles document. Asked "Who speaks Chinese?", it correctly identifies the only Chinese-speaking speaker on the roster (me) instead of inventing an answer — evidence that the grounding worked.</dd>
+
+        <dt>objective</dt>
+        <dd>To experience the full lifecycle of a small human-centered AI product — from gathering real human input, to constraining model behavior with a system prompt, to shipping something a stranger can actually use.</dd>
+
+        <dt>process</dt>
+        <dd>Interview teammates and take structured notes → generate and iterate speaker introductions with AI → build speaker profiles → upload content to Google AI Studio and author the system prompt → test and refine against off-script queries → produce the process and marketing infographics → present with a live unscripted demo.</dd>
+
+        <dt>tools and technologies used</dt>
+        <dd>Google AI Studio (bot platform and system prompt), generative AI tools for infographic design and copy iteration, team collaboration for content and testing.</dd>
+
+        <dt>value proposition</dt>
+        <dd>This artifact proves I can take AI beyond the chat window: constraining a model with a system prompt, structuring real content for retrieval, and testing behavior against unpredictable users are the exact skills production chatbots require.</dd>
+
+        <dt>unique value</dt>
+        <dd>Having built a production LLM system before, I pushed the team to treat the system prompt like an engineering spec — strict scope, defined refusals, structured data — rather than a suggestion. The bot stayed on-task during the live unscripted demo because of it.</dd>
+
+        <dt>relevance</dt>
+        <dd>For employers exploring customer-facing AI: a compact, verifiable demonstration of conversational AI design, prompt engineering discipline, and human-centered process — from interview to launch.</dd>
+
+        <dt>references</dt>
+        <dd>Built with Google AI Studio. Infographics created by our team's task forces as project deliverables.</dd>
+      </dl>
+      <div class="btns">
+        <a class="btn solid" href="https://aistudio.google.com/apps/c06c144e-0d8a-4b1d-b9f7-2739bee80ac9?showPreview=true&showAssistant=true&fullscreenApplet=true" target="_blank" rel="noopener">Try the live bot</a>
+      </div>
+      <div class="two-col">
+        <figure>
+          <img src="assets/bot_directory.png" alt="Speaker directory with language, format, audience, and price filters, showing eight loaded profiles" loading="lazy">
+          <figcaption>fig 2.1 — speaker directory with filters (8 profiles loaded)</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/bot_profile.png" alt="Speaker profile view showing background story, biography highlights, and specializations" loading="lazy">
+          <figcaption>fig 2.2 — speaker profile: story, highlights, specializations</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/bot_compare.png" alt="Compare portal showing a side-by-side speaker evaluation matrix" loading="lazy">
+          <figcaption>fig 2.3 — compare portal: evaluation matrix</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/bot_chat.png" alt="The AI booking agent correctly answering Who speaks Chinese using only the official speaker profiles" loading="lazy">
+          <figcaption>fig 2.4 — "sole authority mode": the agent answers only from official profiles</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/process_infographic.png" alt="Process infographic: the five phases of building the Walk the Talk Speakers Bureau bot" loading="lazy">
+          <figcaption>fig 2.5 — process infographic: five phases from interviews to launch</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/marketing_infographic.png" alt="Marketing infographic promoting the Walk the Talk Speakers Bureau and its AI booking bot" loading="lazy">
+          <figcaption>fig 2.6 — marketing infographic for the bureau and bot</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <!-- ARTIFACT 3 -->
+    <article class="artifact" id="artifact-3">
+      <p class="tag">artifact_03 · leadership baseline</p>
+      <h3>AI Leadership Baseline: Self-Assessment, Visualized</h3>
+      <dl>
+        <dt>title</dt>
+        <dd>AI Leadership Baseline: Self-Assessment, Visualized</dd>
+
+        <dt>introduction</dt>
+        <dd>Radar charts visualizing my scores from two professional self-assessments — Change Management Skills and AI/ML Integration Leadership Skills — taken in the first week of my graduate program, published as an honest baseline to measure my growth against.</dd>
+
+        <dt>description</dt>
+        <dd>Each chart plots my self-assessed score in every category as a percentage of that category's maximum, making strengths and gaps visible at a glance. The shape tells the story: technical categories (Critical Thinking 90%, Technical Understanding of AI/ML 90%, Problem-Solving 84%) run high, while people-side categories (Change Readiness 45%, Change Management Knowledge 47%, Leadership through transitions 48%) run low.</dd>
+
+        <dt>objective</dt>
+        <dd>To establish a measurable starting point for my leadership development — and to practice, on myself, the same discipline I'd bring to any AI project: measure honestly before you optimize.</dd>
+
+        <dt>process</dt>
+        <dd>I completed both assessments item by item, scoring conservatively rather than generously; totaled each category; converted totals to percentages so categories of different sizes could be compared; and plotted them as radar charts. I then critiqued the instruments themselves — redundant items, inconsistent weighting, pure self-report — and proposed revisions in a peer discussion.</dd>
+
+        <dt>tools and technologies used</dt>
+        <dd>Microsoft Word (assessment forms), Python with Matplotlib (data visualization), course readings from the Center for Creative Leadership and Change Strategists to frame the analysis.</dd>
+
+        <dt>value proposition</dt>
+        <dd>This artifact demonstrates two things at once: I can turn raw self-evaluation data into a clear visualization, and I have the self-awareness to publish my weaknesses next to my strengths — the trait research says change leaders need most.</dd>
+
+        <dt>unique value</dt>
+        <dd>Most portfolios only show finished strengths. This one shows the gap analysis — the same radar shape a technical leader would draw for a system audit, applied to myself. Revisiting these charts at the end of the program will make my growth verifiable, not just claimed.</dd>
+
+        <dt>relevance</dt>
+        <dd>For employers and mentors: evidence of data visualization skills, honest self-evaluation, and a concrete professional development plan — I know exactly which skills I'm building and why.</dd>
+
+        <dt>references</dt>
+        <dd>
+          <ul>
+            <li>Center for Creative Leadership. (2024). <em>How to be a successful change leader.</em></li>
+            <li>Change Strategists. (2023). <em>How to assess change management skills.</em></li>
+          </ul>
+        </dd>
+      </dl>
+      <div class="two-col">
+        <figure>
+          <img src="assets/radar_change_mgmt.png" alt="Radar chart of change management self-assessment scores across eleven categories" loading="lazy">
+          <figcaption>fig 3.1 — change management skills baseline</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/radar_ai_ml.png" alt="Radar chart of AI/ML integration leadership self-assessment scores across seven categories" loading="lazy">
+          <figcaption>fig 3.2 — AI/ML integration leadership baseline</figcaption>
+        </figure>
+      </div>
+    </article>
+
+  </section>
+
+  <section id="contact">
+    <p class="eyebrow">// contact</p>
+    <h2>Get in touch</h2>
+    <div class="prose">
+      <p>I'm glad to talk about applied LLMs, AI adoption, or anything in this portfolio.</p>
+      <p style="margin-top:12px"><a href="mailto:daniel.du@myemail.indwes.edu">daniel.du@myemail.indwes.edu</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><span class="mono">wenyu_du · portfolio</span> — built as part of the AI/ML graduate program at Indiana Wesleyan University. Updated July 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>
