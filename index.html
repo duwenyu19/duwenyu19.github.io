@@ -8,20 +8,22 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F7F9FB; --ink:#16232E; --teal:#0E7C7B; --slate:#5C6B78;
-    --hairline:#DDE5EB; --card:#FFFFFF; --amber:#B98A2F;
+    --paper:#FDFDFB; --ink:#131E2E; --teal:#1B2C55; --slate:#5A6577;
+    --hairline:#E2E6ED; --card:#FFFFFF; --amber:#B98A2F; --red:#D5202F;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-  body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-size:16.5px;line-height:1.65}
+  body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-size:16.5px;line-height:1.65;
+    background-image:radial-gradient(rgba(27,44,85,.05) 1px,transparent 1px);background-size:22px 22px}
   .wrap{max-width:980px;margin:0 auto;padding:0 24px}
   a{color:var(--teal)}
   a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
 
-  header{border-bottom:1px solid var(--hairline);background:var(--paper);position:sticky;top:0;z-index:10}
+  header{border-bottom:1px solid var(--hairline);background:#FDFDFBF2;backdrop-filter:blur(4px);position:sticky;top:0;z-index:10}
   .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 14px;gap:16px;flex-wrap:wrap}
   .nav .name{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.02em}
+  .nav .name .star{color:var(--amber);margin-right:7px;font-size:12px;vertical-align:1px}
   .nav ul{display:flex;gap:22px;list-style:none}
   .nav ul a{font-size:14px;text-decoration:none;color:var(--slate)}
   .nav ul a:hover{color:var(--teal)}
@@ -31,22 +33,24 @@
   .hero p{color:var(--slate);max-width:44ch}
   .hero .role{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;margin-bottom:14px}
 
-  .query{background:var(--ink);color:#DCE6EE;border-radius:10px;padding:22px 24px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.8;box-shadow:0 14px 34px rgba(22,35,46,.16)}
-  .query .kw{color:#69C3C1}
-  .query .cm{color:#7A8894}
+  .query{background:#12203C;color:#DCE4F0;border-radius:10px;padding:22px 24px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.8;box-shadow:0 14px 34px rgba(19,30,46,.18);border:1px solid #24365C}
+  .query .kw{color:#8FB4FF}
+  .query .cm{color:#77839B}
   .query .row{color:#E8D9AE}
-  .query hr{border:none;border-top:1px dashed #3A4A58;margin:12px 0}
+  .query hr{border:none;border-top:1px dashed #33456B;margin:12px 0}
 
   section{padding:56px 0;border-top:1px solid var(--hairline)}
   .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--teal);letter-spacing:.06em;margin-bottom:10px}
   h2{font-family:'IBM Plex Serif',serif;font-weight:600;font-size:30px;margin-bottom:22px}
+  h2::after{content:"";display:block;width:84px;height:6px;margin-top:12px;border-radius:2px;
+    background:linear-gradient(90deg,var(--teal) 0 44%,transparent 44% 56%,var(--red) 56% 100%)}
   .prose{max-width:70ch;color:var(--ink)}
   .prose p+p{margin-top:14px}
 
   .vp{background:var(--card);border:1px solid var(--hairline);border-left:4px solid var(--teal);border-radius:8px;padding:26px 28px;max-width:76ch}
   .vp p{font-size:18px;line-height:1.7}
 
-  .artifact{background:var(--card);border:1px solid var(--hairline);border-radius:10px;padding:34px 36px;margin-bottom:34px}
+  .artifact{background:var(--card);border:1px solid var(--hairline);border-left:5px solid var(--red);border-radius:10px;padding:34px 36px;margin-bottom:34px;box-shadow:inset 3px 0 0 -1px var(--teal)}
   .artifact .tag{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--amber);letter-spacing:.05em;margin-bottom:8px}
   h3{font-family:'IBM Plex Serif',serif;font-weight:600;font-size:24px;margin-bottom:20px}
   dl{display:grid;grid-template-columns:190px 1fr;row-gap:16px;column-gap:26px}
@@ -63,18 +67,18 @@
   .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
   .btn{display:inline-block;font-size:14px;font-weight:500;text-decoration:none;padding:9px 16px;border-radius:6px;border:1px solid var(--teal)}
   .btn.solid{background:var(--teal);color:#fff}
-  .btn.solid:hover{background:#0B6362}
+  .btn.solid:hover{background:var(--red);border-color:var(--red)}
   .btn.ghost{color:var(--teal)}
-  .btn.ghost:hover{background:#E8F2F1}
+  .btn.ghost:hover{background:#EDF1F8}
 
   footer{border-top:1px solid var(--hairline);padding:44px 0 60px;color:var(--slate);font-size:14.5px}
   footer .mono{font-family:'IBM Plex Mono',monospace}
 
-  h1 .hl{font-style:italic;color:var(--teal);position:relative;white-space:nowrap}
-  h1 .hl::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:10px;background:rgba(14,124,123,.16);z-index:-1;border-radius:3px}
+  h1 .hl{font-style:italic;color:var(--red);position:relative;white-space:nowrap}
+  h1 .hl::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:10px;background:rgba(213,32,47,.12);z-index:-1;border-radius:3px}
 
   /* ---------- interactive timeline ---------- */
-  .itl{background:#0F1626;border-radius:14px;padding:40px 34px 46px;margin:26px 0 10px;color:#DCE6EE;overflow:hidden}
+  .itl{background:#0E1930;border:1px solid #24365C;border-radius:14px;padding:40px 34px 46px;margin:26px 0 10px;color:#DCE4F0;overflow:hidden}
   .itl-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
   .itl-head .t{font-family:'IBM Plex Serif',serif;font-weight:600;font-size:21px;color:#EAF2F7}
   .itl-head .hint{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#7A8894}
@@ -87,15 +91,15 @@
   .itl-item{position:relative;width:50%;padding:10px 44px 26px 0;opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
   .itl-item.on{opacity:1;transform:none}
   .itl-item:nth-child(even){margin-left:50%;padding:10px 0 26px 44px}
-  .itl-node{position:absolute;top:22px;right:-9px;width:18px;height:18px;border-radius:50%;background:var(--era);border:3px solid #0F1626;box-shadow:0 0 0 2px var(--era),0 0 14px var(--era);z-index:2;transition:box-shadow .3s}
+  .itl-node{position:absolute;top:22px;right:-9px;width:18px;height:18px;border-radius:50%;background:var(--era);border:3px solid #0E1930;box-shadow:0 0 0 2px var(--era),0 0 14px var(--era);z-index:2;transition:box-shadow .3s}
   .itl-item:nth-child(even) .itl-node{right:auto;left:-9px}
-  .itl-card{background:#17202F;border:1px solid #263449;border-radius:10px;padding:16px 18px;text-align:left;transition:transform .25s,border-color .25s,box-shadow .25s}
+  .itl-card{background:#152442;border:1px solid #2A3D66;border-radius:10px;padding:16px 18px;text-align:left;transition:transform .25s,border-color .25s,box-shadow .25s}
   .itl-item:hover .itl-card{transform:translateY(-3px);border-color:var(--era);box-shadow:0 10px 26px rgba(0,0,0,.35)}
   .itl-item:hover .itl-node{box-shadow:0 0 0 3px var(--era),0 0 26px var(--era)}
   .itl-year{font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:500;color:var(--era);letter-spacing:.06em}
   .itl-card h4{font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:15.5px;color:#EAF2F7;margin:4px 0 5px}
   .itl-card p{font-size:13px;line-height:1.55;color:#9AA7BD}
-  .itl-item.winter .itl-card{border-style:dashed;background:#141D2B}
+  .itl-item.winter .itl-card{border-style:dashed;background:#122038}
   .itl-item.winter h4{color:#A9C4E8;letter-spacing:.04em}
   @media (prefers-reduced-motion: reduce){.itl-item{opacity:1;transform:none;transition:none}}
   @media (max-width:820px){
@@ -121,7 +125,7 @@
 
 <header>
   <div class="wrap nav">
-    <span class="name">wenyu_du · portfolio</span>
+    <span class="name"><span class="star">★</span>wenyu_du · portfolio</span>
     <nav aria-label="Site">
       <ul>
         <li><a href="#about">About</a></li>
@@ -267,7 +271,65 @@
 
     <!-- ARTIFACT 2 -->
     <article class="artifact" id="artifact-2">
-      <p class="tag">artifact_02 · applied ai · team project</p>
+      <p class="tag">artifact_02 · analytical writing</p>
+      <h3>Machine Learning vs. Deep Learning: Matching the Approach to the Problem</h3>
+      <dl>
+        <dt>title</dt>
+        <dd>Machine Learning vs. Deep Learning: Matching the Approach to the Problem in Two Real-World Applications</dd>
+
+        <dt>introduction</dt>
+        <dd>A professional comparative-analysis report examining two real-world AI applications — regression-based property valuation and Transformer-based machine translation — and arguing, for each, not only why its approach fits but why the opposite approach would fail. Where my first artifact shows visual storytelling, this one shows a different skill: structured analytical writing backed by research.</dd>
+
+        <dt>description</dt>
+        <dd>The report analyzes house price prediction as a traditional ML problem, using the regression-based computer-assisted mass appraisal (CAMA) systems that county assessors run on hundreds of thousands of properties, and machine translation as a deep learning problem, using Google Translate's 2016 shift from statistical to neural translation. Each case gets a two-way argument: four reasons the chosen approach fits, and the structural reasons the opposite one does not. A personal section connects the valuation example to China's ongoing housing correction — where prices have fallen for 35 consecutive months and inflation-adjusted values have dropped below their 2005 level — and asks why economists with models saw it coming while ordinary families could not.</dd>
+
+        <dt>objective</dt>
+        <dd>To build, and demonstrate, the judgment that AI leadership actually requires: not mastery of the most advanced technique, but the fit analysis that decides when a simple interpretable model beats a deep network — and when it cannot.</dd>
+
+        <dt>process</dt>
+        <dd>I selected one traditional ML example and one deep learning example from the course lesson, researched a verifiable real-world deployment of each, built the double-sided suitability arguments along four dimensions (data structure, data volume, interpretability requirements, computational cost), then added the China housing analysis using current market data and the pre-crisis academic warnings, and structured everything as a professional report in APA style.</dd>
+
+        <dt>tools and technologies used</dt>
+        <dd>Microsoft Word for the report; web research across market data (NBS, BIS) and academic sources; Claude (Anthropic) for drafting and organization assistance, disclosed in the report itself; APA 7 citation format.</dd>
+
+        <dt>value proposition</dt>
+        <dd>This artifact proves I can argue both directions of a technical decision — the rarer skill. Anyone can explain why deep learning is powerful; explaining precisely why it is the wrong tool for a small, regulated, tabular problem is what separates technology selection from technology enthusiasm.</dd>
+
+        <dt>unique value</dt>
+        <dd>The China housing section is analysis no template produces: it connects model choice to who gets access to insight — professionals with models foresaw the correction, families without them could not — and closes with a caution I learned shipping an LLM in production: a model is only as far-sighted as the features it is given.</dd>
+
+        <dt>relevance</dt>
+        <dd>For employers and collaborators: evidence of technical writing, research synthesis, and framework-driven decision-making about when (and when not) to deploy deep learning — directly applicable to architecture reviews, vendor evaluation, and AI strategy.</dd>
+
+        <dt>references</dt>
+        <dd>
+          <ul>
+            <li>Rogoff, K. S., &amp; Yang, Y. (2021). <em>Has China's housing production peaked?</em> China &amp; World Economy, 29(1), 1–31.</li>
+            <li>Vaswani, A., et al. (2017). <em>Attention is all you need.</em> NeurIPS 30.</li>
+            <li>Wu, Y., et al. (2016). <em>Google's neural machine translation system.</em> arXiv.</li>
+            <li>International Association of Assessing Officers. (2017). <em>Standard on mass appraisal of real property.</em></li>
+          </ul>
+        </dd>
+      </dl>
+      <div class="two-col">
+        <figure>
+          <img src="assets/report_p1.jpg" alt="Report page 1: title, introduction, and the house price prediction case" loading="lazy">
+          <figcaption>fig 2.1 — the report: introduction and the traditional ML case</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/report_p2.jpg" alt="Report page 2: why deep learning is unsuitable for valuation, the China housing analysis, and the machine translation case" loading="lazy">
+          <figcaption>fig 2.2 — the two-way argument and the China housing analysis</figcaption>
+        </figure>
+      </div>
+      <div class="btns">
+        <a class="btn solid" href="assets/ML_vs_DL_Report.docx" download>Download the report (.docx)</a>
+        <a class="btn ghost" href="assets/ML_vs_DL_Report.pdf" target="_blank" rel="noopener">Read as PDF</a>
+      </div>
+    </article>
+
+    <!-- ARTIFACT 3 -->
+    <article class="artifact" id="artifact-3">
+      <p class="tag">artifact_03 · applied ai · team project</p>
       <h3>"Walk the Talk — Speakers Bureau" AI Booking Bot</h3>
       <dl>
         <dt>title</dt>
@@ -306,34 +368,34 @@
       <div class="two-col">
         <figure>
           <img src="assets/bot_directory.png" alt="Speaker directory with language, format, audience, and price filters, showing eight loaded profiles" loading="lazy">
-          <figcaption>fig 2.1 — speaker directory with filters (8 profiles loaded)</figcaption>
+          <figcaption>fig 3.1 — speaker directory with filters (8 profiles loaded)</figcaption>
         </figure>
         <figure>
           <img src="assets/bot_profile.png" alt="Speaker profile view showing background story, biography highlights, and specializations" loading="lazy">
-          <figcaption>fig 2.2 — speaker profile: story, highlights, specializations</figcaption>
+          <figcaption>fig 3.2 — speaker profile: story, highlights, specializations</figcaption>
         </figure>
         <figure>
           <img src="assets/bot_compare.png" alt="Compare portal showing a side-by-side speaker evaluation matrix" loading="lazy">
-          <figcaption>fig 2.3 — compare portal: evaluation matrix</figcaption>
+          <figcaption>fig 3.3 — compare portal: evaluation matrix</figcaption>
         </figure>
         <figure>
           <img src="assets/bot_chat.png" alt="The AI booking agent correctly answering Who speaks Chinese using only the official speaker profiles" loading="lazy">
-          <figcaption>fig 2.4 — "sole authority mode": the agent answers only from official profiles</figcaption>
+          <figcaption>fig 3.4 — "sole authority mode": the agent answers only from official profiles</figcaption>
         </figure>
         <figure>
           <img src="assets/process_infographic.png" alt="Process infographic: the five phases of building the Walk the Talk Speakers Bureau bot" loading="lazy">
-          <figcaption>fig 2.5 — process infographic: five phases from interviews to launch</figcaption>
+          <figcaption>fig 3.5 — process infographic: five phases from interviews to launch</figcaption>
         </figure>
         <figure>
           <img src="assets/marketing_infographic.png" alt="Marketing infographic promoting the Walk the Talk Speakers Bureau and its AI booking bot" loading="lazy">
-          <figcaption>fig 2.6 — marketing infographic for the bureau and bot</figcaption>
+          <figcaption>fig 3.6 — marketing infographic for the bureau and bot</figcaption>
         </figure>
       </div>
     </article>
 
-    <!-- ARTIFACT 3 -->
-    <article class="artifact" id="artifact-3">
-      <p class="tag">artifact_03 · leadership baseline</p>
+    <!-- ARTIFACT 4 -->
+    <article class="artifact" id="artifact-4">
+      <p class="tag">artifact_04 · leadership baseline</p>
       <h3>AI Leadership Baseline: Self-Assessment, Visualized</h3>
       <dl>
         <dt>title</dt>
@@ -374,11 +436,11 @@
       <div class="two-col">
         <figure>
           <img src="assets/radar_change_mgmt.png" alt="Radar chart of change management self-assessment scores across eleven categories" loading="lazy">
-          <figcaption>fig 3.1 — change management skills baseline</figcaption>
+          <figcaption>fig 4.1 — change management skills baseline</figcaption>
         </figure>
         <figure>
           <img src="assets/radar_ai_ml.png" alt="Radar chart of AI/ML integration leadership self-assessment scores across seven categories" loading="lazy">
-          <figcaption>fig 3.2 — AI/ML integration leadership baseline</figcaption>
+          <figcaption>fig 4.2 — AI/ML integration leadership baseline</figcaption>
         </figure>
       </div>
     </article>
@@ -399,6 +461,7 @@
 <footer>
   <div class="wrap">
     <p><span class="mono">wenyu_du · portfolio</span> — built as part of the AI/ML graduate program at Indiana Wesleyan University. Updated July 2026.</p>
+    <p style="margin-top:8px;font-size:13px;color:#8A93A5"><span style="color:var(--amber)">★</span> Site palette inspired by the Three Lions' 2026 home kit — happy and glorious.</p>
   </div>
 </footer>
 
